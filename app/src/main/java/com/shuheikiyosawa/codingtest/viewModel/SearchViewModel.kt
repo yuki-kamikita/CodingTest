@@ -1,8 +1,8 @@
 package com.shuheikiyosawa.codingtest.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.shuheikiyosawa.codingtest.core.data.Logger
 import com.shuheikiyosawa.codingtest.model.remote.ApiRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +24,6 @@ class SearchViewModel: ViewModel() {
             text.value = response.toString()
         }
 
-        Log.d("progress","$response")
+        Logger.debug("$response")
     }
 }
