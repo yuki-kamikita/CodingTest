@@ -3,27 +3,31 @@ package com.shuheikiyosawa.codingtest.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.shuheikiyosawa.codingtest.core.data.Logger
+import com.shuheikiyosawa.codingtest.core.data.TopCategoryList
 import com.shuheikiyosawa.codingtest.model.remote.ApiRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SearchViewModel: ViewModel() {
-    val text = MutableLiveData<String>().apply {
-        value = "now loading"
+    val response = MutableLiveData<TopCategoryList>().apply {
+        value = null
     }
     val loading = MutableLiveData<Boolean>().apply {
         value = true
     }
 
-    suspend fun init() {
-        val response = ApiRequest().getTopCategoryList()
+    init {
+        CoroutineScope(Dispatchers.IO).launch {
 
-        CoroutineScope(Dispatchers.Main).launch {
-            loading.value = false
-            text.value = response.toString()
+            val response = ApiRequest().getTopCategoryList()
+
+            CoroutineScope(Dispatchers.Main).launch {
+                loading.value = false
+                this@SearchViewModel.response.value = response
+            }
+
+            Logger.debug("$response")
         }
-
-        Logger.debug("$response")
     }
 }
