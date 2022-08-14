@@ -8,10 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.shuheikiyosawa.codingtest.R
+import com.shuheikiyosawa.codingtest.core.data.Book
 import com.shuheikiyosawa.codingtest.core.data.SubCategory
 
-class SubCategoryAdapter (private val context: Context, private val subCategoryList: List<SubCategory>):
-    RecyclerView.Adapter<SubCategoryViewHolder>() {
+class SubCategoryAdapter (
+    private val context: Context,
+    private val subCategoryList: List<SubCategory>,
+    private val tapBookThumbnail: (book: Book) -> Unit
+): RecyclerView.Adapter<SubCategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubCategoryViewHolder {
         val view = LayoutInflater.from(context)
@@ -25,7 +29,7 @@ class SubCategoryAdapter (private val context: Context, private val subCategoryL
         holder.bookList.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = BookListAdapter(context, subCategoryList[position].bookList)
+            adapter = BookListAdapter(context, subCategoryList[position].bookList, tapBookThumbnail)
         }
 
     }

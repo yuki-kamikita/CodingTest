@@ -13,8 +13,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class BookListAdapter (private val context: Context, private val bookList: List<Book>):
-    RecyclerView.Adapter<BookListViewHolder>() {
+class BookListAdapter (
+    private val context: Context,
+    private val bookList: List<Book>,
+    private val tapBookThumbnail: (book: Book) -> Unit
+): RecyclerView.Adapter<BookListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -31,6 +34,10 @@ class BookListAdapter (private val context: Context, private val bookList: List<
                 .get()
             GlobalScope.launch(Dispatchers.Main) {
                 holder.bookThumbnail.setImageBitmap(bitmap)
+                holder.bookThumbnail.setOnClickListener {
+//                    MainActivity().moveDetailPage(bookList[position])
+                    tapBookThumbnail(bookList[position])
+                }
             }
         }
     }

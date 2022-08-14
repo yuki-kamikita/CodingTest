@@ -2,6 +2,7 @@ package com.shuheikiyosawa.codingtest.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.shuheikiyosawa.codingtest.core.data.Book
 import com.shuheikiyosawa.codingtest.core.data.Logger
 import com.shuheikiyosawa.codingtest.core.data.TopCategoryList
 import com.shuheikiyosawa.codingtest.model.remote.ApiRequest
@@ -15,6 +16,9 @@ class SearchViewModel: ViewModel() {
     }
     val loading = MutableLiveData<Boolean>().apply {
         value = true
+    }
+    val moveToDetailPage = MutableLiveData<Book>().apply {
+        value = null
     }
 
     init {
