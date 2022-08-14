@@ -35,7 +35,6 @@ class BookListAdapter (
             GlobalScope.launch(Dispatchers.Main) {
                 holder.bookThumbnail.setImageBitmap(bitmap)
                 holder.bookThumbnail.setOnClickListener {
-//                    MainActivity().moveDetailPage(bookList[position])
                     tapBookThumbnail(bookList[position])
                 }
             }

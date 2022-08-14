@@ -16,7 +16,10 @@
             android:id="@+id/sub_category_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="24sp"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             tools:text="サブタイトル" />
 
         <androidx.recyclerview.widget.RecyclerView

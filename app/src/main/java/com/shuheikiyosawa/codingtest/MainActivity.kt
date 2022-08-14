@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.google.android.material.tabs.TabLayoutMediator
-import com.shuheikiyosawa.codingtest.core.data.Book
 import com.shuheikiyosawa.codingtest.databinding.ActivityMainBinding
-import com.shuheikiyosawa.codingtest.view.adapter.TopCategoryAdapter
 import com.shuheikiyosawa.codingtest.view.fragment.BookDetailFragment
 import com.shuheikiyosawa.codingtest.view.fragment.SearchFragment
 import com.shuheikiyosawa.codingtest.viewModel.SearchViewModel
@@ -22,8 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
-
-        supportActionBar!!.hide()
 
         supportFragmentManager
             .beginTransaction()
