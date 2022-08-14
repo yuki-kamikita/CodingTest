@@ -42,7 +42,4 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-// TODO: 詳細ページ作成
 // TODO: 保存
-// TODO: デザイン調整
-//       タイトル、タブ
